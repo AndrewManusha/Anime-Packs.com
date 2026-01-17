@@ -1,0 +1,28 @@
+@use 'partials/base' as base;
+
+@use 'partials/popularInMonth';
+
+.slogan {
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.5rem;
+    color: base.$title-color;
+    line-height: 1.4;
+    letter-spacing: 1px;
+}
+
+h1 .highlight-anime {
+    color: base.$accent-color;
+    font-weight: bold;
+}
+
+.about-section {
+    margin: 40px 0 0;
+    
+    a {
+        color: base.$accent-color;
+        text-decoration: underline;
+    }
+}

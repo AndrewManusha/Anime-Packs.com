@@ -1,0 +1,212 @@
+
+:root {
+  --background-color: #121212;
+  --background-overlay: #1E1E1E; /*rgba(42, 42, 42, 0.5)*/
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --main-color: #E0E0E0;
+  --title-color: #F5F5F5;
+  --accent-color: #DC143C;
+  --dull-color: #333;
+  --secondary-color: #A0A0A0;
+}
+
+html{
+    scrollbar-color: var(--secondary-color) transparent;
+    scrollbar-width: auto;
+}
+
+body{
+    margin: 0;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--main-color);
+}
+
+header{
+    position:sticky;
+    top:-120px;
+    padding: 10px 15vw;
+    display:flex;
+    height:150px;
+    z-index:100;
+    justify-content:space-between;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: transform 0.3s ease;
+    background-color: var(--background-color);
+}
+
+.hidden{
+    transform: translateY(-100%);
+}
+
+.overlay{
+    display:none;
+}
+
+.nav-checkbox{
+    display: none;
+}
+
+.nav-button{
+    display:none;
+    position:relative;
+    width:30px;
+}
+
+.lines, .lines::before, .lines::after{
+    content:'';
+    position:absolute;
+    width:30px;
+    height:2px;
+    background-color:white;
+    border-radius:2px;
+    transition:transform 0.3s ease, opacity 0.3s ease;
+}
+
+.lines::before{
+    top:-10px;
+}
+
+.lines::after{
+    top:10px;
+}
+
+.nav-checkbox:checked 
++ .nav-button .lines{
+    
+}
+
+.logo a{
+    font-size:32px;
+    text-decoration:none;
+    text-align:center;
+    color:var(--accent-color);
+    font-weight:600;
+}
+
+nav {
+    position:absolute;
+    bottom:0;
+    display: flex;
+    gap: 10px;
+    padding:5px;
+    justify-content: flex-start;
+}
+
+nav a {
+    font-size: 18px;
+    position: relative;
+    text-decoration: none;
+    color: var(--title-color);
+    padding: 10px 20px;
+    transition: color 0.3s;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 4px;
+    background-color: none;
+    border-radius: 4px;
+    transition: width 0.3s, background-color 0.3s;
+}
+
+nav a:hover::after {
+    width: 80%;
+    background-color: var(--dull-color);
+}
+
+nav a.active {
+    color: var(--accent-color);
+}
+
+nav a.active::after {
+    width: 80%;
+    background-color: var(--accent-color);
+}
+
+
+main{
+    width:100%;
+    max-width:1080px;
+    margin:25px auto;
+}
+
+footer{
+    font-size:small; 
+    text-align: right;  
+    padding:10px;
+    box-shadow: 0 -4px 8px var(--shadow-color);
+}
+
+footer IMG{
+    height: 20px;
+    width: 20px;
+    margin-bottom:-5px;
+}
+
+footer A{
+    padding:5px;
+    color: var(--title-color);
+    text-decoration: none;
+}
+
+h1{
+    font-size: 28px;
+}
+@media (max-width: 767px) {
+    header{
+        position:fixed;
+        top:0;
+        left: 0;
+        right: 0;
+        align-items: center; 
+        padding:10px;
+        flex-direction:row;
+        height:40px;
+    }
+    .nav-menu{
+        display:none;
+        position:fixed;
+        left:0;
+        top:60px;
+        background-color: var(--background-overlay);
+        flex-direction:column;
+        z-index:2;
+    }
+    .overlay{
+        height:100%;
+        width:100%;
+        top:60px;
+        position:fixed;
+        background: var(--shadow-color);
+        z-index:0;
+    }
+    .nav-checkbox:checked ~ .nav-menu{
+        display:flex;
+    }
+    .nav-checkbox:checked ~ .overlay{
+        display:block;
+    }
+    .nav-button{
+        display:block;
+        z-index:3;
+    }
+    main{
+        width:auto;
+        margin:25px 10px;
+        margin-top:80px;
+    }
+    h1 {
+        font-size: 20px; /* Меньше на мобильных устройствах */
+        line-height: 1.2;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    
+}

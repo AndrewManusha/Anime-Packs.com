@@ -1,0 +1,166 @@
+@use 'base' as base;
+
+$star-size: 20px !default;
+
+.stars {
+    display: flex;
+    white-space: nowrap;
+    gap: 3px;
+    margin:6px 0;
+    
+    .star {
+        position: relative;
+        display: inline-block;
+        width: $star-size;
+        height: $star-size;
+        clip-path: polygon(
+            50% 0%, 
+            66.67% 32.14%, 
+            100% 39.29%, 
+            76.67% 64.29%, 
+            83.33% 100%, 
+            50% 85.71%, 
+            16.67% 100%, 
+            23.33% 64.29%, 
+            0% 39.29%, 
+            33.33% 32.14%
+        );
+
+        
+    }
+        .full{
+            background: base.$accent-color;
+        }
+        
+        .half{
+            background: linear-gradient(to right, base.$accent-color 50%, base.$secondary-color 50%);
+        }
+        
+        .empty{
+            background: base.$secondary-color;
+        }
+}
+
+.views {
+    position: relative;
+    padding-left: 30px;
+
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+    }
+
+    &::before {
+        top: 3px;
+        left: 5px;
+        width: 16px;
+        height: 8px;
+        border: 2px solid base.$main-color;
+        border-radius: 50% / 45%;
+    }
+
+    &::after {
+        top: 5px;
+        left: 11px;
+        width: 8px;
+        height: 8px;
+        background-color: base.$main-color;
+    }
+}
+
+.download-icon {
+    display: inline-block;
+    width: 16px;
+    height: 5px;
+    margin-right: 5px;
+    position: relative;
+    border-radius: 2px;
+    border: 2px solid base.$main-color;
+    border-top: 2px solid transparent;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 4px;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 6px;
+        background-color: base.$main-color;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 5px solid base.$main-color;
+    }
+}
+
+.refresh-icon {
+    $start: 90deg;
+    $end: 135deg;
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    
+    vertical-align: -2px;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: conic-gradient(base.$main-color 0deg $start, transparent $start $end, base.$main-color $end 360deg);
+        mask: radial-gradient(circle, transparent calc(6px - 1%), black 6px);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 8px;
+        top: -2px;
+        width: 0;
+        height: 0;
+        border-left: 4px solid base.$main-color;
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        transform-origin: 0 10px;
+        transform: rotate($start);
+    }
+
+    .arrow {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+    
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            bottom:0;
+            width: 1px;
+            background-color: base.$main-color;
+        }
+    
+        &::before {
+            height: 4px;
+            transform-origin: bottom center;
+            transform: rotate(215deg);
+        }
+    
+        &::after {
+            height: 5px;
+            transform-origin: bottom center;
+            transform: rotate(60deg);
+        }
+    }
+}

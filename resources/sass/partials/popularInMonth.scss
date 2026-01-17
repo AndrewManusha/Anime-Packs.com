@@ -1,0 +1,188 @@
+@use 'base' as base;
+
+/* Основные стили для галереи */
+.PopularInMonth {
+    width: 100%;
+    position: relative;
+    user-select: none;
+    z-index: 10;
+    margin-bottom: 30px;
+
+    .swiper-container {
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        background-color: base.$background-overlay;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        
+        
+        .swiper-slide {
+            display: flex;
+            
+            
+            .preview {
+                width: 70%;
+        
+                img {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                }
+            }
+            
+            .info {
+                width: 30%;
+                
+                .title {
+                    color: base.$title-color;
+                    padding-left: 20px;
+                    font-size: 32px;
+                    margin: 20px 0;
+                }
+                
+                .thumbnails {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+                    grid-template-rows: repeat(2, auto); /* 2 строки */
+                    
+                    .thumbnail-wrapper {
+                        padding: 5px;
+                        
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+                
+                .description {
+                    padding: 0 20px;
+                    line-height: 1.5;
+                    color: base.$main-color;
+                }
+            }
+        }
+    }
+
+    /* Навигационные кнопки */
+    .swiper-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 100;
+        width: 64px;
+        height: 128px;
+        cursor: pointer;
+        
+        $icon-size: 32px;
+
+        &-next,
+        &-prev {
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: block;
+        }
+
+        &-next {
+            right: -64px;
+            background: linear-gradient(90deg, base.$background-color 0%, base.$background-overlay 100%);
+
+            &:hover {
+                background: linear-gradient(90deg, base.$background-color 0%, base.$accent-color 100%);
+            }
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                right: 50%;
+                top: 50%;
+                transform: translate(calc(50% - #{$icon-size * sqrt(2) / 4 - $icon-size / 12}), -50%) rotate(-135deg);
+                transition: transform 0.3s ease;
+                height: $icon-size;
+                width: $icon-size;
+                border-left: calc($icon-size/6) solid base.$main-color;
+                border-bottom: calc($icon-size/6) solid base.$main-color;
+                box-sizing: border-box;
+                border-radius: calc($icon-size/6);
+            }
+        }
+
+        &-prev {
+            left: -64px;
+            background: linear-gradient(-90deg, base.$background-color 0%, base.$background-overlay 100%);
+
+            &:hover {
+                background: linear-gradient(-90deg, base.$background-color 0%, base.$accent-color 100%);
+            }
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                right: 50%;
+                top: 50%;
+                transform: translate(calc(50% + #{$icon-size * sqrt(2) / 4 - $icon-size / 12}), -50%) rotate(45deg);
+                transition: transform 0.3s ease;
+                height: $icon-size;
+                width: $icon-size;
+                border-left: calc($icon-size/6) solid base.$main-color;
+                border-bottom: calc($icon-size/6) solid base.$main-color;
+                box-sizing: border-box;
+                border-radius: calc($icon-size/6);
+            }
+        }
+    }
+    
+    .swiper-pagination {
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        
+        .swiper-pagination-bullet {
+            height: 12px;
+            width: 18px;
+            margin: 6px;
+            border-radius: 3px;
+            opacity: 1;
+            background: none;
+            background-color: base.$dull-color;
+            
+            &.swiper-pagination-bullet-active {
+                background-color: base.$accent-color;
+            }
+        }
+    }
+
+    /* Медиазапросы */
+    @media (max-width: 767px) {
+        .swiper-container {
+            .swiper-slide {
+                flex-direction: column;
+                
+                .preview,
+                .info {
+                    width: 100%;
+                }
+                
+                .info {
+                    
+                    .thumbnails {
+                        display: none;
+                    }
+                }
+            }
+        }
+        
+        .swiper-button{
+            display: none;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        /* Добавьте специфичные стили для этого диапазона, если необходимо */
+    }
+}

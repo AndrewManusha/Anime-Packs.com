@@ -1,0 +1,53 @@
+@use '../partials/base' as base;
+@use "sass:color";
+
+.modal{
+    
+    .close-modal{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: base.$shadow-color;
+        z-index: 200;
+    }
+    
+    .modal-content{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        height: 200px;
+        background-color: base.$background-overlay;
+        z-index: 250;
+        transform: translate(-50%, -50%);
+    }
+    
+    h2{
+        text-align: center;
+    }
+    
+    p{
+        margin: 10px;
+    }
+    
+    a{
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        padding: 10px 20px;
+        border-radius: 20px;
+        transform: translateX(-50%);
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+        color: base.$title-color;
+        background-color: base.$accent-color;
+        font-size: 20px;
+        
+        &:hover {
+        background-color: color.adjust(base.$accent-color, $lightness: -10%);
+        cursor: pointer;
+    }
+    }
+}

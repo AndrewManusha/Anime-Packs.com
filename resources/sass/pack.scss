@@ -1,0 +1,139 @@
+@use 'partials/base' as base;
+@use 'partials/pack-icons'with (
+  $star-size: 28px,      // Передаем переменную для размера иконки
+);
+@use 'partials/image-galery';
+@use "sass:color";
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+}
+
+.main-content, .sidebar {
+    padding: 5px;
+}
+
+.main-content {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-panel {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+    
+    .left, .right {
+        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+}
+
+.rating{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.download {
+    transition: background-color 0.3s ease;
+    font-size: 120%;
+    padding: 10px;
+    width: 140px;
+    height: 20px;
+    text-align: center;
+    border-radius: 15px;
+    background-color: base.$accent-color;
+    text-decoration: none;
+    color: base.$title-color;
+    float: right;
+    
+    &:hover {
+        background-color: color.adjust(base.$accent-color, $lightness: -10%);
+        cursor: pointer;
+    }
+}
+
+.description {
+    padding-top: 10px;
+    border: 0;
+    border-top: 1px solid base.$dull-color;
+    
+    ul {
+        list-style: disc;
+        margin: 0 20px;
+    }  
+    
+    .name-list {
+        overflow: hidden;
+        max-height: 2000px;
+        transition: max-height .6s ease;
+        
+        &.small {
+            max-height: 120px;
+            box-shadow: inset 0 -10px 10px -10px base.$shadow-color;
+        }
+        
+        .tablet-header {
+            text-align: center;
+        }
+        
+        .copy-item {
+            cursor: pointer;
+            transition: background-color .6s ease;
+            
+            &.copied {
+                background-color: base.$accent-color;
+                transition: none;
+            }
+        }
+        
+        table {
+            width:100%;
+            border-collapse: collapse;
+        }
+        
+        tr, td {
+            padding: 3px 12px;
+            border: 1px solid base.$dull-color;
+        }
+    }
+    
+    .toggle-name-list {
+        position: relative;
+        display: block;
+        margin: 10px auto;
+    }
+}
+
+@media (max-width: 1080px) {
+    .main-content, .sidebar {
+        width: 100%;
+    }
+
+    .layout {
+        flex-direction: column;
+    }
+
+    .info-panel {
+        flex-direction: column;
+    }
+
+    .download {
+        width: auto;
+    }
+}

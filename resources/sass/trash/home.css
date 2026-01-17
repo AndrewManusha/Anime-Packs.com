@@ -1,0 +1,22 @@
+.slogan{
+    text-align: center;
+}
+h1 {
+    
+    font-size: 1.5rem;
+    color: var(--title-color); /* Цвет текста по умолчанию */
+    
+    line-height: 1.4;
+    letter-spacing: 1px;
+}
+
+h1 .highlight-anime {
+    color: var(--accent-color); /* Яркий цвет для "Anime" */
+    font-weight: bold;
+}
+
+.layout{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

@@ -1,0 +1,137 @@
+/* Основные стили для галереи */
+.PopularInMonth {
+    width: 100%;
+    position: relative;
+    user-select: none;
+    z-index:10;
+}
+
+.PopularInMonth .swiper-container {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    background-color: #1A1A1A;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.PopularInMonth .swiper-slide {
+    display: flex;
+}
+
+.PopularInMonth .title {
+    color:#FFFFFF;
+    padding-left: 20px;
+    font-size: 32px;
+    margin: 20px 0;
+}
+
+.PopularInMonth .description {
+    padding: 0 20px;
+    line-height: 1.5;
+    color:#E0E0E0;
+}
+
+.PopularInMonth a {
+    display: flex;
+    text-decoration:none;
+}
+
+.PopularInMonth .preview {
+    width: 70%;
+}
+
+.PopularInMonth .preview img {
+    width: 100%;
+    height: auto;
+}
+
+.PopularInMonth .info {
+    width: 30%;
+}
+
+.thumbnails {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+    grid-template-rows: repeat(2, auto); /* 2 строки */
+}
+
+.thumbnail-wrapper {
+    padding: 5px;
+}
+
+.thumbnail-wrapper img {
+    width: 100%;
+}
+
+/* Навигационные кнопки */
+.swiper-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    width: 64px;
+    height: 128px;
+    cursor: pointer;
+}
+
+.swiper-button-next:hover {
+    background: linear-gradient(90deg, rgba(79, 195, 247, 0) 0%, rgba(79, 195, 247, 0.3) 100%);
+}
+
+.swiper-button-next {
+    right: -64px;
+    background: linear-gradient(90deg, rgba(136, 136, 136, 0) 0%, rgba(136, 136, 136, 0.2) 100%);
+}
+
+.swiper-button-prev:hover {
+    background: linear-gradient(-90deg, rgba(79, 195, 247, 0) 0%, rgba(79, 195, 247, 0.3) 100%);
+}
+
+.swiper-button-prev {
+    left: -64px;
+    background: linear-gradient(-90deg, rgba(136, 136, 136, 0) 0%, rgba(136, 136, 136, 0.2) 100%);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    content: "";
+    width: 64px;
+    height: 64px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+}
+
+.swiper-button-next::after {
+    background-image: url('/images/3.png');
+}
+
+.swiper-button-prev::after {
+    background-image: url('/images/4.png');
+}
+
+/* Медиазапросы */
+@media (max-width: 767px) {
+    .swiper-button{
+        display:none;
+    }
+    .swiper-slide {
+        flex-direction: column;
+    }
+
+    .PopularInMonth .preview, 
+    .PopularInMonth .info {
+        width: 100%;
+    }
+
+    .thumbnails {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Here you can add specific styles for this range if needed */
+}
