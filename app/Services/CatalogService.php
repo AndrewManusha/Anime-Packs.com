@@ -8,33 +8,23 @@ use Illuminate\Support\Facades\Auth;
 class CatalogService
 {
     /**
-     * Получить валидные значения для фильтров
+     * Получить данные для каталога
      */
-    public function getValidFilters()
+    public function getCatalogData($param1 = null, $param2 = null, $param3 = null, $param4 = null)
     {
+        // Получаем все нужные поля сразу
         $data = Pack::distinct()->get(['type', 'franchise', 'category']);
         
-        return [
-            'sections' => $data->pluck('type')->unique()->values()->toArray(),
-            'franchises' => $data->pluck('franchise')->unique()->values()->toArray(),
-            'categories' => $data->pluck('category')
-                ->flatMap(function ($cat) {
-                    return array_map('trim', explode(',', $cat));
-                })
-                ->unique()
-                ->values()
-                ->toArray(),
-        ];
-    }
-
-    /**
-     * Парсить параметры URL в фильтры
-     */
-    public function parseFilters($param1 = null, $param2 = null, $param3 = null, $param4 = null)
-    {
-        $validFilters = $this->getValidFilters();
-        $validSections = $validFilters['sections'];
-        $validFranchises = $validFilters['franchises'];
+        // Формируем массивы уникальных значений
+        $validSections = $data->pluck('type')->unique()->values()->toArray();
+        $validFranchises = $data->pluck('franchise')->unique()->values()->toArray();
+        $validCategories = $data->pluck('category')
+            ->flatMap(function ($cat) {
+                return array_map('trim', explode(',', $cat));
+            })
+            ->unique()
+            ->values()
+            ->toArray();
 
         // Инициализируем переменные фильтров
         $filters = [
@@ -63,14 +53,7 @@ class CatalogService
             }
         }
 
-        return $filters;
-    }
-
-    /**
-     * Получить пакеты с применением фильтров
-     */
-    public function getCatalogItems($filters)
-    {
+        // Строим базовый запрос с LEFT JOIN
         $query = Pack::query()
             ->leftJoin('page_analytics_summary', 'packs.page_url', '=', 'page_analytics_summary.page_url')
             ->selectRaw('packs.*, 
@@ -114,26 +97,9 @@ class CatalogService
 
         // Пагинация
         $items = $query->paginate(15, ['*'], 'page', $filters['page']);
-        
-        return $items;
-    }
-
-    /**
-     * Получить данные для каталога
-     */
-    public function getCatalogData($param1 = null, $param2 = null, $param3 = null, $param4 = null)
-    {
-        // Парсим фильтры
-        $filters = $this->parseFilters($param1, $param2, $param3, $param4);
-        
-        // Получаем валидные значения
-        $validFilters = $this->getValidFilters();
-        
-        // Получаем пакеты
-        $items = $this->getCatalogItems($filters);
-        
-        // Проверка на существование страницы
         $lastPage = $items->lastPage();
+
+        // Проверка на существование страницы
         if ($filters['page'] < 1 || $filters['page'] > $lastPage) {
             return ['error' => 404];
         }
@@ -148,8 +114,8 @@ class CatalogService
             'page' => $filters['page'],
             'search' => $filters['search'],
             'section' => $filters['section'],
-            'franchises' => $validFilters['franchises'],
-            'categories' => $validFilters['categories'],
+            'franchises' => $validFranchises,
+            'categories' => $validCategories,
         ];
     }
 }
