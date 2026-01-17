@@ -18,15 +18,13 @@ class PackController extends Controller
             $name = null;
         }
         
-        // Заменяем дефисы на подчеркивания и добавляем .zip
-        $formattedName = str_replace('-', '_', $name ?: $franchise) . '.zip';
+        // Формируем page_url из параметров маршрута
+        $pageUrl = "/{$section}/{$franchise}" . ($name ? "/{$name}" : "");
 
         // Используем модель Pack для выполнения запроса и сохраняем первый результат в $item
         $item = Pack::query()
             ->leftJoin('page_analytics_summary', 'packs.page_url', '=', 'page_analytics_summary.page_url')
-            ->where('packs.type', $section)
-            ->where('packs.franchise', $franchise)
-            ->where('packs.file', $formattedName)
+            ->where('packs.page_url', $pageUrl)
             ->selectRaw('packs.*, 
                 IFNULL(page_analytics_summary.views, 0) as views, 
                 IFNULL(page_analytics_summary.downloads, 0) as downloads, 
