@@ -56,6 +56,7 @@ class PackController extends Controller
             $recommendations = Pack::query()
                 ->leftJoin('page_analytics_summary', 'packs.page_url', '=', 'page_analytics_summary.page_url')
                 ->where('packs.page_url', '!=', $item->page_url)
+                ->where('packs.status', 'posted')
                 ->where(function($query) use ($item, $franchiseCount) {
                     if ($franchiseCount >= 6) {
                         $query->where('packs.franchise', $item->franchise);
