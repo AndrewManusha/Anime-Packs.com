@@ -23,14 +23,9 @@ class PackController extends Controller
 
         // Используем модель Pack для выполнения запроса и сохраняем первый результат в $item
         $item = Pack::query()
-            ->leftJoin('page_analytics_summary', 'packs.page_url', '=', 'page_analytics_summary.page_url')
             ->where('packs.page_url', $pageUrl)
-            ->selectRaw('packs.*, 
-                IFNULL(page_analytics_summary.views, 0) as views, 
-                IFNULL(page_analytics_summary.downloads, 0) as downloads, 
-                IFNULL(page_analytics_summary.avg_rating, 5) as rating')
+            ->withAnalytics()
             ->first();
-
 
         // Проверяем, найден ли элемент, если нет, выдаем ошибку 404
         if (!$item) {
@@ -41,9 +36,6 @@ class PackController extends Controller
         
         $userId = auth()->check() ? auth()->user()->google_id : null;
 
-        // Проверяем, содержит ли текущий URL слово "download"
-        $isDownload = $request->is('*download*');
-
         // Если в URL есть "download", передаем в соответствующий шаблон
         if ($action == 'download') {
             return view('download', ['item' => $item, 'userId' => $userId, 'fileUrl' => $fileUrl]);
@@ -52,7 +44,6 @@ class PackController extends Controller
             $franchiseCount = Pack::where('franchise', $item->franchise)->count();
             
             $recommendations = Pack::query()
-                ->leftJoin('page_analytics_summary', 'packs.page_url', '=', 'page_analytics_summary.page_url')
                 ->where('packs.page_url', '!=', $item->page_url)
                 ->where('packs.status', 'posted')
                 ->where(function($query) use ($item, $franchiseCount) {
@@ -67,21 +58,17 @@ class PackController extends Controller
                         });
                     }
                 })
-                ->selectRaw('packs.*, 
-                    IFNULL(page_analytics_summary.views, 0) as views, 
-                    IFNULL(page_analytics_summary.downloads, 0) as downloads, 
-                    IFNULL(page_analytics_summary.avg_rating, 5) as rating,
-                    CASE WHEN packs.franchise = ? THEN 1 ELSE 0 END as same_franchise', [$item->franchise]) // <<< добавили
+                ->withAnalytics($item->franchise)
                 ->orderByDesc('same_franchise')
                 ->orderByDesc('downloads')
                 ->limit(6)
                 ->get();
             
-            if ($item->franchise == ($name ?: $franchise)) {
-                if ($item->franchise == ($name ?: $franchise)) {
-                    $includes = Pack::query()
+            $includes = null;
+            if (!$name) {
+                $includes = Pack::query()
                         ->select(['items'])
-                        ->where('franchise', $franchise)
+                        ->where('franchise', $item->franchise)
                         ->where('status', 'posted')
                         ->whereNotNull('items')
                         ->where('items', '!=', '')
@@ -93,7 +80,6 @@ class PackController extends Controller
                         ->flatten(1) // объединит все массивы в один
                         ->values()
                         ->all(); // получим обычный массив
-                }
             }
             
             $item['items'] = json_decode($item['items'], true);

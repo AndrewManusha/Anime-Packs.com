@@ -55,11 +55,7 @@ class CatalogService
 
         // Строим базовый запрос с LEFT JOIN
         $query = Pack::query()
-            ->leftJoin('page_analytics_summary', 'packs.page_url', '=', 'page_analytics_summary.page_url')
-            ->selectRaw('packs.*, 
-                IFNULL(page_analytics_summary.views, 0) as views, 
-                IFNULL(page_analytics_summary.downloads, 0) as downloads, 
-                IFNULL(page_analytics_summary.avg_rating, 5) as rating')
+            ->withAnalytics()
             ->orderBy('packs.updated_at', 'desc');
 
         // Применяем фильтры

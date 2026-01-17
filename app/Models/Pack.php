@@ -20,4 +20,35 @@ class Pack extends Model
 
     // Тип ключа — строка
     protected $keyType = 'string';
+
+    /**
+     * Scope для подключения аналитики и выбора необходимых полей
+     * 
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string|null $franchiseForComparison Если передан, добавит поле same_franchise для сравнения
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWithAnalytics($query, $franchiseForComparison = null)
+    {
+        $selectRaw = 'packs.*, 
+            IFNULL(page_analytics_summary.views, 0) as views, 
+            IFNULL(page_analytics_summary.downloads, 0) as downloads, 
+            IFNULL(page_analytics_summary.avg_rating, 5) as rating';
+        
+        if ($franchiseForComparison) {
+            $selectRaw .= ', CASE WHEN packs.franchise = ? THEN 1 ELSE 0 END as same_franchise';
+        }
+
+        $query = $query
+            ->leftJoin('page_analytics_summary', 'packs.page_url', '=', 'page_analytics_summary.page_url');
+        
+        if ($franchiseForComparison) {
+            $query = $query->selectRaw($selectRaw, [$franchiseForComparison]);
+        } else {
+            $query = $query->selectRaw($selectRaw);
+        }
+        
+        return $query;
+    }
+    }
 }
