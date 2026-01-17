@@ -64,6 +64,7 @@ class PackController extends Controller
                 ->limit(6)
                 ->get();
             
+            //названия предметов для переименования у франшизного пака берутся из всех паков этой франшизы
             $includes = null;
             if (!$name) {
                 $includes = Pack::query()

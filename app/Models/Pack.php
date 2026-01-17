@@ -50,5 +50,5 @@ class Pack extends Model
         
         return $query;
     }
-    }
+    
 }
