@@ -135,7 +135,7 @@
         <li class="card">
 				<div class="image">
                     <a href="{{ $item->page_url }}">
-                        <img src="/storage{{ $item->page_url }}/{{ basename($item->page_url) === $item->franchise ? $item->franchise . '/' : '' }}{{ strtok($item->images, ', ') }}" width="251" height="141" 
+                        <img src="/storage{{ $item->fileUrl }}/{{ strtok($item->images, ', ') }}" width="251" height="141" 
                             alt="{{ !empty(explode(' | ', $item->image_alts)[0]) ? explode(' | ', $item->image_alts)[0] : ucfirst($item->title) . ' from ' . ucwords(str_replace('-', ' ', $item->franchise)) . ' Resource Pack Preview' }}"
                             @if($index > 2) loading="lazy" decoding="async" @endif >
                     </a>

@@ -50,5 +50,15 @@ class Pack extends Model
         
         return $query;
     }
-    
+
+    /**
+     * Accessor для получения URL файла пака
+     * Если это франшизный пак, добавляет /franchise/ к пути
+     */
+    public function getFileUrlAttribute(): string
+    {
+        return (basename($this->page_url) === $this->franchise)
+            ? rtrim($this->page_url, '/') . '/' . $this->franchise
+            : $this->page_url;
+    }
 }
