@@ -29,6 +29,8 @@ Route::prefix('admin')
     ->group(function () {
         Route::get('/load/pack/form', [LoaderController::class, 'index'])->name('pack-loader');
         Route::post('/load/pack', [LoaderController::class, 'load']);
+
+        Route::get('/analytic', [App\Http\Controllers\AnalyticController::class, 'index'])->name('admin-analytic');
     });
 
 // ======= Google Auth =======
