@@ -2,7 +2,7 @@
 @use 'partials/pack-icons' as icons;
 
 .stars {
-  @include icons.stars(20px);
+  @include icons.stars;
 }
 
 :target {

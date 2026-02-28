@@ -8,7 +8,7 @@
 }
 
 .min-stars {
-  @include icons.stars(20px);
+  @include icons.stars;
 }
 
 .layout {
