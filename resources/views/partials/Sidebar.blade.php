@@ -19,10 +19,10 @@
                     </div>
 
                     <div class="tags">
-                        <a href="{{  }}">{{ $rec->franchise }}</a>
+                        <a href="#">{{ $rec->franchise }}</a>
                         <span> | </span>
                         @foreach (explode(', ', $rec->category) as $tag)
-                        <a href="{{  }}">{{ $tag }}</a>
+                        <a href="#">{{ $tag }}</a>
                         @if (!$loop->last)
                         <span> | </span>
                         @endif
