@@ -43,6 +43,15 @@
                 <div class="description">
                     <p>{{ $rec->min_desc }}</p>
                 </div>
+                <div class="footer">
+					<div class="created_at">
+						{{ getTime($rec->created_at) }}
+					</div>
+					<div class="updated_at" style="{{ $rec->updated_at == $rec->created_at ? 'display: none;' : '' }}">
+                        <div class="refresh-icon"><div class="arrow"></div></div>  
+                        {{ getTime($rec->updated_at) }}
+                    </div>
+				</div>
             </div>
         </li>
     </a>
