@@ -1,5 +1,9 @@
 @use 'partials/base' as base;
-@use 'partials/pack-icons';
+@use 'partials/pack-icons' as icons;
+
+.stars {
+  @include icons.stars(20px);
+}
 
 :target {
     padding-top: 115px;

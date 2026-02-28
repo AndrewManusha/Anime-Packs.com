@@ -110,6 +110,29 @@
   transform: rotate(60deg);
 }
 
+.stars {
+  display: flex;
+  white-space: nowrap;
+  gap: 3px;
+  margin: 6px 0;
+}
+.stars .star {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  clip-path: polygon(50% 0%, 66.67% 32.14%, 100% 39.29%, 76.67% 64.29%, 83.33% 100%, 50% 85.71%, 16.67% 100%, 23.33% 64.29%, 0% 39.29%, 33.33% 32.14%);
+}
+.stars .full {
+  background: #DC143C;
+}
+.stars .half {
+  background: linear-gradient(to right, #DC143C 50%, #A0A0A0 50%);
+}
+.stars .empty {
+  background: #A0A0A0;
+}
+
 :target {
   padding-top: 115px;
   margin-top: -115px;
