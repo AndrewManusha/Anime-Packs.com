@@ -19,10 +19,10 @@
                     </div>
 
                     <div class="tags">
-                        <a href="{{ url('/catalog/' . ($section ? $section . '/' : '') . $rec->franchise) }}">{{ $rec->franchise }}</a>
+                        <a href="{{  }}">{{ $rec->franchise }}</a>
                         <span> | </span>
                         @foreach (explode(', ', $rec->category) as $tag)
-                        <a href="{{ url('/catalog/' . ($section ? $section . '/' : '') . 'category-' . $tag) }}">{{ $tag }}</a>
+                        <a href="{{  }}">{{ $tag }}</a>
                         @if (!$loop->last)
                         <span> | </span>
                         @endif
