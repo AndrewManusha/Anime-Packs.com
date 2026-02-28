@@ -21,6 +21,12 @@
     flex-direction: column;
 }
 
+.recommendations {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: repeat(1, 1fr);
+}
+
 .sidebar {
     width: 30%;
     display: flex;
