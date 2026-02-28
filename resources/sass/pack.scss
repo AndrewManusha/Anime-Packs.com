@@ -1,9 +1,15 @@
 @use 'partials/base' as base;
-@use 'partials/pack-icons'with (
-  $star-size: 28px,      // Передаем переменную для размера иконки
-);
+@use 'partials/pack-icons' as icons;
 @use 'partials/image-galery';
 @use "sass:color";
+
+.stars {
+  @include icons.stars(28px);
+}
+
+.min-stars {
+  @include icons.stars(20px);
+}
 
 .layout {
     display: flex;

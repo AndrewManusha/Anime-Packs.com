@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="rating">
-                            <div class="stars" title="{{ $rec->rating }}/5 stars">
+                            <div class="minstars" title="{{ $rec->rating }}/5 stars">
                                 {!! renderStars($rec->rating) !!}
                             </div>
                         </div>
