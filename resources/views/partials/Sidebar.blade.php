@@ -11,6 +11,7 @@
                 alt="{{ !empty(explode(' | ', $rec->image_alts)[0]) ? explode(' | ', $rec->image_alts)[0] : ucfirst($rec->title) . ' from ' . ucwords(str_replace('-', ' ', $rec->franchise)) . ' Resource Pack Preview' }}"
                 @if($index > 2) loading="lazy" decoding="async" @endif >
             <h2>{{ $rec->title }}</h2>
+            <p>{{ $rec->min_desc }}</p>
         </div>
     </a>
     @endforeach
