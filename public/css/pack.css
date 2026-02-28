@@ -347,8 +347,6 @@
   flex-grow: 1;
 }
 .sidebar .card .info-panel .header {
-  display: grid;
-  grid-template-columns: 60% 40%;
   margin-bottom: 10px;
 }
 .sidebar .card .info-panel .header h2 {
