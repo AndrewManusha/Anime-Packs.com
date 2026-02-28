@@ -1,1 +1,83 @@
-document.addEventListener("DOMContentLoaded",(function(){var e=document.getElementById("header"),t=0,n=!1,i=window.innerWidth<=768,o=function(){var o=document.querySelector(".menu.is-open");if(!i||o)return e.classList.remove("hidden"),void(n=!1);var s=window.pageYOffset||document.documentElement.scrollTop;s>60?e.classList.toggle("hidden",s>t):e.classList.remove("hidden"),t=Math.max(s,0),n=!1};window.addEventListener("scroll",(function(){n||(n=!0,requestAnimationFrame(o))})),window.addEventListener("resize",(function(){i=window.innerWidth<=768})),document.addEventListener("click",(function(t){var n=t.target.closest(".menu-button"),i=t.target.closest(".menu");if(!n&&!i)return document.querySelectorAll(".menu.is-open").forEach((function(e){return e.classList.remove("is-open")})),document.querySelectorAll('.menu-button[aria-expanded="true"]').forEach((function(e){e.setAttribute("aria-expanded","false")})),void document.querySelectorAll(".menu-button.is-active").forEach((function(e){e.classList.remove("is-active")}));if(n){var o=n.dataset.menuId,s=document.getElementById(o);if(s){var r=s.classList.contains("is-open");document.querySelectorAll(".menu.is-open").forEach((function(e){e!==s&&e.classList.remove("is-open")})),document.querySelectorAll('.menu-button[aria-expanded="true"]').forEach((function(e){e!==n&&e.setAttribute("aria-expanded","false")})),document.querySelectorAll(".menu-button.is-active").forEach((function(e){e!==n&&e.classList.remove("is-active")})),s.classList.toggle("is-open",!r),n.setAttribute("aria-expanded",String(!r)),n.classList.toggle("is-active",!r),r||void 0===e||e.classList.remove("hidden")}}}))}));
+document.addEventListener('DOMContentLoaded', function () {
+  var header = document.getElementById('header');
+  var lastScrollTop = 0;
+  var isTicking = false;
+  var mobile = window.innerWidth <= 768;
+  var updateMobileFlag = function updateMobileFlag() {
+    mobile = window.innerWidth <= 768;
+  };
+  var handleScroll = function handleScroll() {
+    var isAnyMenuOpen = document.querySelector('.menu.is-open');
+    if (!mobile || isAnyMenuOpen) {
+      header.classList.remove('hidden'); // Явно показываем хедер
+      isTicking = false;
+      return;
+    }
+    var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (currentScroll > 60) {
+      header.classList.toggle('hidden', currentScroll > lastScrollTop);
+    } else {
+      header.classList.remove('hidden');
+    }
+    lastScrollTop = Math.max(currentScroll, 0);
+    isTicking = false;
+  };
+  var onScroll = function onScroll() {
+    if (!isTicking) {
+      isTicking = true;
+      requestAnimationFrame(handleScroll);
+    }
+  };
+  window.addEventListener('scroll', onScroll);
+  window.addEventListener('resize', updateMobileFlag);
+  document.addEventListener('click', function (e) {
+    var button = e.target.closest('.menu-button');
+    var clickedMenu = e.target.closest('.menu');
+
+    // Клик вне меню и кнопок — закрыть все меню
+    if (!button && !clickedMenu) {
+      document.querySelectorAll('.menu.is-open').forEach(function (menu) {
+        return menu.classList.remove('is-open');
+      });
+      document.querySelectorAll('.menu-button[aria-expanded="true"]').forEach(function (btn) {
+        btn.setAttribute('aria-expanded', 'false');
+      });
+      document.querySelectorAll('.menu-button.is-active').forEach(function (btn) {
+        btn.classList.remove('is-active');
+      });
+      return;
+    }
+
+    // Клик по кнопке
+    if (button) {
+      var menuId = button.dataset.menuId;
+      var menu = document.getElementById(menuId);
+      if (menu) {
+        var isOpen = menu.classList.contains('is-open');
+
+        // Закрыть все другие меню
+        document.querySelectorAll('.menu.is-open').forEach(function (m) {
+          if (m !== menu) m.classList.remove('is-open');
+        });
+
+        // Обновить aria и классы у других кнопок
+        document.querySelectorAll('.menu-button[aria-expanded="true"]').forEach(function (btn) {
+          if (btn !== button) btn.setAttribute('aria-expanded', 'false');
+        });
+        document.querySelectorAll('.menu-button.is-active').forEach(function (btn) {
+          if (btn !== button) btn.classList.remove('is-active');
+        });
+
+        // Переключить текущее меню и кнопку
+        menu.classList.toggle('is-open', !isOpen);
+        button.setAttribute('aria-expanded', String(!isOpen));
+        button.classList.toggle('is-active', !isOpen);
+
+        // Показать header, если меню открылось
+        if (!isOpen && typeof header !== 'undefined') {
+          header.classList.remove('hidden');
+        }
+      }
+    }
+  });
+});
