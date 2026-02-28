@@ -17,6 +17,12 @@
                     <div class="title">
                         <h2>{{ $rec->title }}</h2>
                     </div>
+
+                    <div class="rating">
+                            <div class="stars" title="{{ $rec->rating }}/5 stars">
+                                {!! renderStars($rec->rating) !!}
+                            </div>
+                        </div>
                 </div>
                 <div class="description">
                     <p>{{ $rec->min_desc }}</p>
