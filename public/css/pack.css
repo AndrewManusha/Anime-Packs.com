@@ -431,7 +431,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.info-panel .rating {
+.info-panel .left .rating, .info-panel .right .rating {
   display: flex;
   flex-direction: column;
   justify-content: center;
