@@ -25,6 +25,103 @@
     width: 30%;
     display: flex;
     flex-direction: column;
+
+        .card {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background-color: base.$background-overlay;
+        border-radius: 11px;
+        box-shadow: 0 4px 8px base.$shadow-color;
+        
+        .image {
+            margin: 0;
+            position: relative;
+            
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: auto;
+                margin: 0;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+        }
+        
+        .info-panel {
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+            
+            .header {
+                display: grid;
+                grid-template-columns: 60% 40%;
+                margin-bottom: 10px;
+                
+                // &> * {
+                //     max-width: 100%;
+                //     white-space: nowrap;
+                //     overflow: hidden;
+                //     text-overflow: ellipsis;
+                // }
+            
+                h2 {
+                    margin: 0;
+                    font-size: 24px;
+                    color: base.$title-color;
+                }
+                
+                .title, .tags {
+                    justify-self: start;
+                    grid-column: 1;
+                }
+                
+                .rating, .statistics {
+                    justify-self: end;
+                    grid-column: 2;
+                }
+                
+                .title, .rating {
+                    margin-bottom: 10px;
+                    grid-row: 1;
+                }
+                
+                .tags {
+                    font-size: 14px;
+                    grid-row: 2;
+                    
+                    a {
+                        padding: 3px;
+                        text-decoration: none;
+                        transition: background-color .3s ease, color .3s ease, text-decoration .3s ease;
+                        
+                        &:hover {
+                            color: base.$title-color;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+                
+                .statistics{
+                    display: flex;
+                    justify-content: center;
+                    gap: 5px;
+                    grid-row: 2;
+                }
+            }
+            
+            .description {
+                margin-bottom: 10px;
+            }
+            
+            .footer {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
 }
 
 .info-panel {
