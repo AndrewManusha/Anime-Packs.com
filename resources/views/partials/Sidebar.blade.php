@@ -18,11 +18,27 @@
                         <h2>{{ $rec->title }}</h2>
                     </div>
 
+                    <div class="tags">
+                        <a href="{{ url('/catalog/' . ($section ? $section . '/' : '') . $rec->franchise) }}">{{ $rec->franchise }}</a>
+                        <span> | </span>
+                        @foreach (explode(', ', $rec->category) as $tag)
+                        <a href="{{ url('/catalog/' . ($section ? $section . '/' : '') . 'category-' . $tag) }}">{{ $tag }}</a>
+                        @if (!$loop->last)
+                        <span> | </span>
+                        @endif
+                        @endforeach
+                    </div>
+
                     <div class="rating">
-                            <div class="min-stars" title="{{ $rec->rating }}/5 stars">
-                                {!! renderStars($rec->rating) !!}
-                            </div>
+                        <div class="min-stars" title="{{ $rec->rating }}/5 stars">
+                            {!! renderStars($rec->rating) !!}
                         </div>
+                    </div>
+
+                    <div class="statistics">
+                        <span class="views">{{ shortenNumber($rec->views) }}</span> |
+                        <span class="downloads"><div class="download-icon"></div>{{ shortenNumber($rec->downloads) }}</span>
+                    </div>
                 </div>
                 <div class="description">
                     <p>{{ $rec->min_desc }}</p>
