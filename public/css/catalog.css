@@ -100,7 +100,7 @@
   background-color: #E0E0E0;
 }
 
-.download {
+.download-icon {
   display: inline-block;
   width: 16px;
   height: 4.8px;
@@ -110,7 +110,7 @@
   border: 2px solid #E0E0E0;
   border-top: 2px solid transparent;
 }
-.download::before {
+.download-icon::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -120,7 +120,7 @@
   height: 6.4px;
   background-color: #E0E0E0;
 }
-.download::after {
+.download-icon::after {
   content: "";
   position: absolute;
   left: 50%;

@@ -6,10 +6,10 @@
 }
 
 .vievs {
-  @include icons.views-icon;
+  @include icons.views-icon(16px);
 }
-.download {
-  @include icons.download-icon;
+.download-icon {
+  @include icons.download-icon(16px);
 }
 
 :target {
