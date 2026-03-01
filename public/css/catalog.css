@@ -1,62 +1,4 @@
 /* rgba(42, 42, 42, 0.5) */
-.views {
-  position: relative;
-  padding-left: 30px;
-}
-.views::before, .views::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-}
-.views::before {
-  top: 3px;
-  left: 5px;
-  width: 16px;
-  height: 8px;
-  border: 2px solid #E0E0E0;
-  border-radius: 50%/45%;
-}
-.views::after {
-  top: 5px;
-  left: 11px;
-  width: 8px;
-  height: 8px;
-  background-color: #E0E0E0;
-}
-
-.download-icon {
-  display: inline-block;
-  width: 16px;
-  height: 5px;
-  margin-right: 5px;
-  position: relative;
-  border-radius: 2px;
-  border: 2px solid #E0E0E0;
-  border-top: 2px solid transparent;
-}
-.download-icon::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 4px;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 6px;
-  background-color: #E0E0E0;
-}
-.download-icon::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 5px solid #E0E0E0;
-}
-
 .refresh-icon {
   position: relative;
   display: inline-block;
@@ -131,6 +73,64 @@
 }
 .stars .empty {
   background: #A0A0A0;
+}
+
+.vievs {
+  position: relative;
+  padding-left: 32px;
+}
+.vievs::before, .vievs::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+.vievs::before {
+  top: 2.88px;
+  left: 4.8px;
+  width: 16px;
+  height: 8px;
+  border: 2px solid #E0E0E0;
+  border-radius: 50%/45%;
+}
+.vievs::after {
+  top: 4.8px;
+  left: 11.2px;
+  width: 8px;
+  height: 8px;
+  background-color: #E0E0E0;
+}
+
+.download {
+  display: inline-block;
+  width: 16px;
+  height: 4.8px;
+  margin-right: 4.8px;
+  position: relative;
+  border-radius: 2px;
+  border: 2px solid #E0E0E0;
+  border-top: 2px solid transparent;
+}
+.download::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 6.4px;
+  background-color: #E0E0E0;
+}
+.download::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6.4px solid transparent;
+  border-right: 6.4px solid transparent;
+  border-top: 4.8px solid #E0E0E0;
 }
 
 :target {

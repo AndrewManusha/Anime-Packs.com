@@ -5,6 +5,13 @@
   @include icons.stars;
 }
 
+.vievs {
+  @include icons.views-icon;
+}
+.download {
+  @include icons.download-icon;
+}
+
 :target {
     padding-top: 115px;
     margin-top: -115px;

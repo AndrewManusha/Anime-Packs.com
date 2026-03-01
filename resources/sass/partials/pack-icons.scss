@@ -42,67 +42,68 @@
   }
 }
 
-.views {
-    position: relative;
-    padding-left: 30px;
+@mixin views-icon($size: 16px) {
+  position: relative;
+  padding-left: $size * 2;
 
-    &::before, &::after {
-        content: '';
-        position: absolute;
-        border-radius: 50%;
-    }
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+  }
 
-    &::before {
-        top: 3px;
-        left: 5px;
-        width: 16px;
-        height: 8px;
-        border: 2px solid base.$main-color;
-        border-radius: 50% / 45%;
-    }
+  &::before {
+    top: $size * 0.18;
+    left: $size * 0.3;
+    width: $size;
+    height: $size * 0.5;
+    border: 2px solid base.$main-color;
+    border-radius: 50% / 45%;
+  }
 
-    &::after {
-        top: 5px;
-        left: 11px;
-        width: 8px;
-        height: 8px;
-        background-color: base.$main-color;
-    }
+  &::after {
+    top: $size * 0.3;
+    left: $size * 0.7;
+    width: $size * 0.5;
+    height: $size * 0.5;
+    background-color: base.$main-color;
+  }
 }
 
-.download-icon {
-    display: inline-block;
-    width: 16px;
-    height: 5px;
-    margin-right: 5px;
-    position: relative;
-    border-radius: 2px;
-    border: 2px solid base.$main-color;
-    border-top: 2px solid transparent;
+@mixin download-icon($size: 16px) {
+  display: inline-block;
+  width: $size;
+  height: $size * 0.3;
+  margin-right: $size * 0.3;
+  position: relative;
+  border-radius: 2px;
+  border: 2px solid base.$main-color;
+  border-top: 2px solid transparent;
 
-    &::before {
-        content: '';
-        position: absolute;
-        left: 50%;
-        bottom: 4px;
-        transform: translateX(-50%);
-        width: 4px;
-        height: 6px;
-        background-color: base.$main-color;
-    }
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: $size * 0.25;
+    transform: translateX(-50%);
+    width: $size * 0.25;
+    height: $size * 0.4;
+    background-color: base.$main-color;
+  }
 
-    &::after {
-        content: '';
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%);
-        width: 0;
-        height: 0;
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-top: 5px solid base.$main-color;
-    }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: $size * 0.4 solid transparent;
+    border-right: $size * 0.4 solid transparent;
+    border-top: $size * 0.3 solid base.$main-color;
+  }
 }
 
 .refresh-icon {
