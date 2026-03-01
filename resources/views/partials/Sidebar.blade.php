@@ -8,7 +8,7 @@
     <a href="{{ url($rec->page_url) }}">
         <li class="card">
             <div class="image">
-                <img src="/storage{{ $rec->page_url }}/{{ basename($rec->page_url) === $rec->franchise ? $rec->franchise . '/' : '' }}{{ strtok($rec->images, ', ') }}" width="304" height="171" 
+                <img src="/storage{{ $rec->page_url }}/{{ basename($rec->page_url) === $rec->franchise ? $rec->franchise . '/' : '' }}{{ strtok($rec->images, ', ') }}" width="16" height="9" 
                     alt="{{ !empty(explode(' | ', $rec->image_alts)[0]) ? explode(' | ', $rec->image_alts)[0] : ucfirst($rec->title) . ' from ' . ucwords(str_replace('-', ' ', $rec->franchise)) . ' Resource Pack Preview' }}"
                     @if($index > 2) loading="lazy" decoding="async" @endif >
             </div>
@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="rating">
-                        <div class="stars" title="{{ $rec->rating }}/5 stars">
+                        <div class="                                        stars" title="{{ $rec->rating }}/5 stars">
                             {!! renderStars($rec->rating) !!}
                         </div>
                     </div>
