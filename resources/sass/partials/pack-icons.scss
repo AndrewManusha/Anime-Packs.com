@@ -1,6 +1,6 @@
 @use 'base' as base;
 
-@mixin stars($star-size: 1.5em) {
+@mixin stars($star-size: 1.25em) {
   display: flex;
   white-space: nowrap;
   gap: 3px;
