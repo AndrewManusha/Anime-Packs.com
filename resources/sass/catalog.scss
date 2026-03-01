@@ -6,10 +6,10 @@
 }
 
 .views {
-  @include icons.views-icon(16px);
+  @include icons.views-icon(1em);
 }
 .download-icon {
-  @include icons.download-icon(16px);
+  @include icons.download-icon(1em);
 }
 
 :target {
