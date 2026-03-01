@@ -258,7 +258,7 @@
 
 .views {
   position: relative;
-  padding-left: 24px;
+  padding-left: 26px;
 }
 .views::before, .views::after {
   content: "";
@@ -266,26 +266,26 @@
   border-radius: 50%;
 }
 .views::before {
-  top: 2.16px;
-  left: 3.6px;
-  width: 12px;
-  height: 6px;
+  top: 2.34px;
+  left: 3.9px;
+  width: 13px;
+  height: 6.5px;
   border: 2px solid #E0E0E0;
   border-radius: 50%/45%;
 }
 .views::after {
-  top: 3.6px;
-  left: 8.4px;
-  width: 6px;
-  height: 6px;
+  top: 3.9px;
+  left: 9.1px;
+  width: 6.5px;
+  height: 6.5px;
   background-color: #E0E0E0;
 }
 
 .download-icon {
   display: inline-block;
-  width: 12px;
-  height: 3.6px;
-  margin-right: 3.6px;
+  width: 13px;
+  height: 3.9px;
+  margin-right: 3.9px;
   position: relative;
   border-radius: 2px;
   border: 2px solid #E0E0E0;
@@ -295,10 +295,10 @@
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 3px;
+  bottom: 3.25px;
   transform: translateX(-50%);
-  width: 3px;
-  height: 4.8px;
+  width: 3.25px;
+  height: 5.2px;
   background-color: #E0E0E0;
 }
 .download-icon::after {
@@ -309,9 +309,9 @@
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 4.8px solid transparent;
-  border-right: 4.8px solid transparent;
-  border-top: 3.6px solid #E0E0E0;
+  border-left: 5.2px solid transparent;
+  border-right: 5.2px solid transparent;
+  border-top: 3.9px solid #E0E0E0;
 }
 
 .layout {
