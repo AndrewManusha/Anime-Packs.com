@@ -371,7 +371,7 @@
 }
 .sidebar .card .info-panel .header {
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 1fr auto;
   margin-bottom: 10px;
 }
 .sidebar .card .info-panel .header h2 {

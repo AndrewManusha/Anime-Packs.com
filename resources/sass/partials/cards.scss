@@ -44,7 +44,6 @@
         
             h2 {
                 margin: 0;
-                font-size: 24px;
                 color: base.$title-color;
             }
             
@@ -64,7 +63,7 @@
                 .views {
                     @include icons.views-icon(1em);
                 }
-                
+
                 .download-icon {
                     @include icons.download-icon(1em);
                 }
