@@ -9,7 +9,7 @@
             $alt = $imgAlts[$index] ?? "Resource Pack Preview Image";
             $src = "/storage" . $fileUrl . "/" .  $image_link;
             $loadingAttribute = $index === 0 ? '' : 'loading="lazy"';
-            $slides .= "<div class='swiper-slide'><img src='$src' alt='$alt' $loadingAttribute></div>";
+            $slides .= "<div class='swiper-slide'><img src='$src' width="16" height="9" alt='$alt' $loadingAttribute></div>";
         }
     }
 @endphp
