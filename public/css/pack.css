@@ -256,6 +256,64 @@
   background: #A0A0A0;
 }
 
+.views {
+  position: relative;
+  padding-left: 24px;
+}
+.views::before, .views::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+.views::before {
+  top: 2.16px;
+  left: 3.6px;
+  width: 12px;
+  height: 6px;
+  border: 2px solid #E0E0E0;
+  border-radius: 50%/45%;
+}
+.views::after {
+  top: 3.6px;
+  left: 8.4px;
+  width: 6px;
+  height: 6px;
+  background-color: #E0E0E0;
+}
+
+.download-icon {
+  display: inline-block;
+  width: 12px;
+  height: 3.6px;
+  margin-right: 3.6px;
+  position: relative;
+  border-radius: 2px;
+  border: 2px solid #E0E0E0;
+  border-top: 2px solid transparent;
+}
+.download-icon::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 4.8px;
+  background-color: #E0E0E0;
+}
+.download-icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4.8px solid transparent;
+  border-right: 4.8px solid transparent;
+  border-top: 3.6px solid #E0E0E0;
+}
+
 .layout {
   display: flex;
   min-height: 100vh;

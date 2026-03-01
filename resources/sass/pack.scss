@@ -11,6 +11,13 @@
   @include icons.stars;
 }
 
+.views {
+  @include icons.views-icon(12px);
+}
+.download-icon {
+  @include icons.download-icon(12px);
+}
+
 .layout {
     display: flex;
     min-height: 100vh;
