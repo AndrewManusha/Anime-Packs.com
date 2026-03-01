@@ -210,110 +210,6 @@
     height: 45px;
   }
 }
-.stars {
-  display: flex;
-  white-space: nowrap;
-  gap: 3px;
-  margin: 6px 0;
-}
-.stars .star {
-  position: relative;
-  display: inline-block;
-  width: 28px;
-  height: 28px;
-  clip-path: polygon(50% 0%, 66.67% 32.14%, 100% 39.29%, 76.67% 64.29%, 83.33% 100%, 50% 85.71%, 16.67% 100%, 23.33% 64.29%, 0% 39.29%, 33.33% 32.14%);
-}
-.stars .full {
-  background: #DC143C;
-}
-.stars .half {
-  background: linear-gradient(to right, #DC143C 50%, #A0A0A0 50%);
-}
-.stars .empty {
-  background: #A0A0A0;
-}
-
-.min-stars {
-  display: flex;
-  white-space: nowrap;
-  gap: 3px;
-  margin: 6px 0;
-}
-.min-stars .star {
-  position: relative;
-  display: inline-block;
-  width: 1.25em;
-  height: 1.25em;
-  clip-path: polygon(50% 0%, 66.67% 32.14%, 100% 39.29%, 76.67% 64.29%, 83.33% 100%, 50% 85.71%, 16.67% 100%, 23.33% 64.29%, 0% 39.29%, 33.33% 32.14%);
-}
-.min-stars .full {
-  background: #DC143C;
-}
-.min-stars .half {
-  background: linear-gradient(to right, #DC143C 50%, #A0A0A0 50%);
-}
-.min-stars .empty {
-  background: #A0A0A0;
-}
-
-.views {
-  position: relative;
-  padding-left: 2em;
-}
-.views::before, .views::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-}
-.views::before {
-  top: 0.18em;
-  left: 0.3em;
-  width: 1em;
-  height: 0.5em;
-  border: 2px solid #E0E0E0;
-  border-radius: 50%/45%;
-}
-.views::after {
-  top: 0.3em;
-  left: 0.7em;
-  width: 0.5em;
-  height: 0.5em;
-  background-color: #E0E0E0;
-}
-
-.download-icon {
-  display: inline-block;
-  width: 1em;
-  height: 0.3em;
-  margin-right: 0.3em;
-  position: relative;
-  border-radius: 2px;
-  border: 2px solid #E0E0E0;
-  border-top: 2px solid transparent;
-}
-.download-icon::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0.25em;
-  transform: translateX(-50%);
-  width: 0.25em;
-  height: 0.4em;
-  background-color: #E0E0E0;
-}
-.download-icon::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 0.4em solid transparent;
-  border-right: 0.4em solid transparent;
-  border-top: 0.3em solid #E0E0E0;
-}
-
 .layout {
   display: flex;
   min-height: 100vh;
@@ -386,6 +282,84 @@
   justify-self: end;
   grid-column: 2;
 }
+.sidebar .card .info-panel .header .rating .stars, .sidebar .card .info-panel .header .statistics .stars {
+  display: flex;
+  white-space: nowrap;
+  gap: 3px;
+  margin: 6px 0;
+}
+.sidebar .card .info-panel .header .rating .stars .star, .sidebar .card .info-panel .header .statistics .stars .star {
+  position: relative;
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
+  clip-path: polygon(50% 0%, 66.67% 32.14%, 100% 39.29%, 76.67% 64.29%, 83.33% 100%, 50% 85.71%, 16.67% 100%, 23.33% 64.29%, 0% 39.29%, 33.33% 32.14%);
+}
+.sidebar .card .info-panel .header .rating .stars .full, .sidebar .card .info-panel .header .statistics .stars .full {
+  background: #DC143C;
+}
+.sidebar .card .info-panel .header .rating .stars .half, .sidebar .card .info-panel .header .statistics .stars .half {
+  background: linear-gradient(to right, #DC143C 50%, #A0A0A0 50%);
+}
+.sidebar .card .info-panel .header .rating .stars .empty, .sidebar .card .info-panel .header .statistics .stars .empty {
+  background: #A0A0A0;
+}
+.sidebar .card .info-panel .header .rating .views, .sidebar .card .info-panel .header .statistics .views {
+  position: relative;
+  padding-left: 2em;
+}
+.sidebar .card .info-panel .header .rating .views::before, .sidebar .card .info-panel .header .rating .views::after, .sidebar .card .info-panel .header .statistics .views::before, .sidebar .card .info-panel .header .statistics .views::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+.sidebar .card .info-panel .header .rating .views::before, .sidebar .card .info-panel .header .statistics .views::before {
+  top: 0.18em;
+  left: 0.3em;
+  width: 1em;
+  height: 0.5em;
+  border: 2px solid #E0E0E0;
+  border-radius: 50%/45%;
+}
+.sidebar .card .info-panel .header .rating .views::after, .sidebar .card .info-panel .header .statistics .views::after {
+  top: 0.3em;
+  left: 0.7em;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: #E0E0E0;
+}
+.sidebar .card .info-panel .header .rating .download-icon, .sidebar .card .info-panel .header .statistics .download-icon {
+  display: inline-block;
+  width: 1em;
+  height: 0.3em;
+  margin-right: 0.3em;
+  position: relative;
+  border-radius: 2px;
+  border: 2px solid #E0E0E0;
+  border-top: 2px solid transparent;
+}
+.sidebar .card .info-panel .header .rating .download-icon::before, .sidebar .card .info-panel .header .statistics .download-icon::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0.25em;
+  transform: translateX(-50%);
+  width: 0.25em;
+  height: 0.4em;
+  background-color: #E0E0E0;
+}
+.sidebar .card .info-panel .header .rating .download-icon::after, .sidebar .card .info-panel .header .statistics .download-icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 0.4em solid transparent;
+  border-right: 0.4em solid transparent;
+  border-top: 0.3em solid #E0E0E0;
+}
 .sidebar .card .info-panel .header .title, .sidebar .card .info-panel .header .rating {
   margin-bottom: 10px;
   grid-row: 1;
@@ -435,6 +409,28 @@
   flex-direction: column;
   justify-content: center;
   margin-bottom: 10px;
+}
+.info-panel .left .rating .stars, .info-panel .right .rating .stars {
+  display: flex;
+  white-space: nowrap;
+  gap: 3px;
+  margin: 6px 0;
+}
+.info-panel .left .rating .stars .star, .info-panel .right .rating .stars .star {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  clip-path: polygon(50% 0%, 66.67% 32.14%, 100% 39.29%, 76.67% 64.29%, 83.33% 100%, 50% 85.71%, 16.67% 100%, 23.33% 64.29%, 0% 39.29%, 33.33% 32.14%);
+}
+.info-panel .left .rating .stars .full, .info-panel .right .rating .stars .full {
+  background: #DC143C;
+}
+.info-panel .left .rating .stars .half, .info-panel .right .rating .stars .half {
+  background: linear-gradient(to right, #DC143C 50%, #A0A0A0 50%);
+}
+.info-panel .left .rating .stars .empty, .info-panel .right .rating .stars .empty {
+  background: #A0A0A0;
 }
 
 .download {

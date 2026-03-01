@@ -3,21 +3,6 @@
 @use 'partials/image-galery';
 @use "sass:color";
 
-.stars {
-  @include icons.stars(28px);
-}
-
-.min-stars {
-  @include icons.stars;
-}
-
-.views {
-  @include icons.views-icon(1em);
-}
-.download-icon {
-  @include icons.download-icon(1em);
-}
-
 .layout {
     display: flex;
     min-height: 100vh;
@@ -99,6 +84,18 @@
                 .rating, .statistics {
                     justify-self: end;
                     grid-column: 2;
+
+                    .stars {
+                        @include icons.stars;
+                    }
+
+                    .views {
+                        @include icons.views-icon(1em);
+                    }
+                    .download-icon {
+                        @include icons.download-icon(1em);
+                    }
+
                 }
                 
                 .title, .rating {
@@ -159,6 +156,10 @@
             flex-direction: column;
             justify-content: center;
             margin-bottom: 10px;
+
+            .stars {
+                @include icons.stars(28px);
+            }
         }
 
     }
