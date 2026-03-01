@@ -12,10 +12,10 @@
 }
 
 .views {
-  @include icons.views-icon(13px);
+  @include icons.views-icon(1em);
 }
 .download-icon {
-  @include icons.download-icon(13px);
+  @include icons.download-icon(1em);
 }
 
 .layout {
