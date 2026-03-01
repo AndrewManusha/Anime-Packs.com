@@ -75,16 +75,16 @@
   background: #A0A0A0;
 }
 
-.vievs {
+.views {
   position: relative;
   padding-left: 32px;
 }
-.vievs::before, .vievs::after {
+.views::before, .views::after {
   content: "";
   position: absolute;
   border-radius: 50%;
 }
-.vievs::before {
+.views::before {
   top: 2.88px;
   left: 4.8px;
   width: 16px;
@@ -92,7 +92,7 @@
   border: 2px solid #E0E0E0;
   border-radius: 50%/45%;
 }
-.vievs::after {
+.views::after {
   top: 4.8px;
   left: 11.2px;
   width: 8px;
